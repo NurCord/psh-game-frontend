@@ -16,7 +16,6 @@ export const TableStats = () => {
 
   useEffect(() => {
     async function fetchData() {
-      console.log('holi');
       const apiUrl = process.env.REACT_APP_API_URL;
       if (!apiUrl) return;
       const response = await axios.get(apiUrl);
