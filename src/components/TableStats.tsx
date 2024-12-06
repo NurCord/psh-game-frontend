@@ -2,9 +2,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import PlayerStats from "types/PlayerStats";
+import { CSVLink } from "react-csv";
 
 const headers = [
-  { key: "profile", label: "Profile" },
+  { key: "profileImage", label: "Profile" },
   { key: "nickname", label: "Nickname" },
   { key: "score", label: "Score" },
   { key: "creationDate", label: "Creation Date" },
@@ -32,7 +33,17 @@ export const TableStats = () => {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
-      <h1 className="text-2xl font-bold mb-4">Player Statistics</h1>
+      <div className="flex flex-row gap-16">
+        <h1 className="text-2xl font-bold mb-4">Player Statistics</h1>
+        <CSVLink
+          data={stats}
+          headers={headers}
+          filename={"player_stats.csv"}
+          className="mb-4 px-4 py-2 bg-blue-500 text-white rounded"
+        >
+          Export to CSV
+        </CSVLink>
+      </div>
       {loading ? (
         <div>Loading...</div>
       ) : (
